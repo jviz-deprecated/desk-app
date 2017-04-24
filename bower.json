@@ -1,0 +1,14 @@
+{
+  "name": "desk-app",
+  "description": "Main desktop element",
+  "ignore": [ "**/.*", "node_modules", "bower_components" ],
+  "dependencies":
+  {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "jviz": "https://github.com/jviz/jviz.git#dev",
+    "jviz-styles": "https://github.com/jviz/jviz-styles.git#dev"
+  },
+  "license": "MIT",
+  "authors": [ "Josemi Juanes <josemijuanes@gmail.com>" ],
+  "keywords": [ "jviz", "webcomponents", "jviz-components", "desk", "desk-components", "desktop-app" ]
+}
