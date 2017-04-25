@@ -10,7 +10,8 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 <link rel="import" href="../jviz-styles/jviz-styles.html">
 <link rel="import" href="../jviz-icons/jviz-icons.html">
 
-<!-- Import app elements -->
+<!-- Import desk components -->
+<link rel="import" href="../desk-styles/desk-styles.html">
 
 <!-- Desk app module -->
 <dom-module id="desk-app">
@@ -25,31 +26,58 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         position: relative;
         overflow: hidden;
       }
+      :host .navbar
+      {
+        display: none;
+        position: absolute;
+        top: 0px;
+      }
+      :host[has-navbar] .navbar
+      {
+        display: block;
+        width: 100%;
+        height: var(--desk-navbar--height);
+        left: 0px;
+      }
+      :host[has-sidebar] .navbar
+      {
+        width: calc(100% - var(--desk-sidebar--width)) !important;
+        left: var(--desk-sidebar--width);
+      }
       :host .sidebar
       {
         display: none;
-        float: left;
+        position: absolute;
+        top: 0px;
+        left: 0px;
       }
       :host[has-sidebar] .sidebar
       {
-        display: inline-block;
+        display: block;
+        height: 100%;
       }
       :host .content
       {
-        width: calc(100% - 30px);
-        height: calc(100% - 30px);
-        display: inline-block;
-        position: relative;
-        float: right;
+        width: calc(100% - 2*var(--desk-app-content--padding));
+        height: calc(100% - 2*var(--desk-app-content--padding));
+        display: block;
+        position: absolute;
         overflow-x: hidden;
-        padding: 15px;
+        padding: var(--desk-app-content--padding);
       }
       :host[has-sidebar] .content
       {
-        width: calc(100% - 150px);
+        width: calc(100% - var(--desk-sidebar--width) - 2*var(--desk-app-content--padding));
+        left: var(--desk-sidebar--width);
+      }
+      :host[has-navbar] .content
+      {
+        height: calc(100% - 2*var(--desk-app-content--padding) - var(--desk-navbar--height));
+        top: var(--desk-navbar--height);
       }
     </style>
     <div class="sidebar"><content select="desk-sidebar"></content></div>
+    <div class="navbar"><content select="desk-navbar"></content></div>
     <div class="content"><content></content></div>
   </template>
 </dom-module>
@@ -61,6 +89,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 
   //Properties
   desk_app.properties = {};
+  desk_app.properties.hasNavbar = { type: Boolean, reflectToAttribute: true, value: false };
   desk_app.properties.hasSidebar = { type: Boolean, reflectToAttribute: true, value: false };
 
   //Register the desk app element
