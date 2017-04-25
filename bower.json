@@ -5,8 +5,9 @@
   "dependencies":
   {
     "polymer": "Polymer/polymer#^1.4.0",
-    "jviz": "https://github.com/jviz/jviz.git#dev",
-    "jviz-styles": "https://github.com/jviz/jviz-styles.git#dev"
+    "jviz": "jviz/jviz#dev",
+    "jviz-styles": "jviz/jviz-styles#dev",
+    "desk-styles": "jviz/desk-styles#dev"
   },
   "license": "MIT",
   "authors": [ "Josemi Juanes <josemijuanes@gmail.com>" ],
